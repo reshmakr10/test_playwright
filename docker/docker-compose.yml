@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  ui-tests:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    working_dir: /workspace
+    environment:
+      - UI_BASE_URL=https://dev-executive.entebus.com
+      - UI_USERNAME=guest
+      - UI_PASSWORD=password
+    command: ["npm", "run", "ui:test"]
+
+  api-tests:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    working_dir: /workspace
+    environment:
+      - API_BASE_URL=https://dev-api.entebus.com
+      - API_USERNAME=guest
+      - API_PASSWORD=password
+    command: ["pytest", "-c", "api-tests/pytest.ini"]

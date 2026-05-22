@@ -6,3 +6,20 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Framework artifacts
+reports/
+logs/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+env/
+.venv/
+
+# Docker
+docker/**/node_modules/
