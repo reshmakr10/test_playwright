@@ -31,7 +31,7 @@ export class LoginPage {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await Promise.all([
-      this.page.waitForURL('**/dashboard', { timeout: 20000 }).catch(() => null),
+      this.page.waitForURL('**/dashboard', { timeout: 30000 }),
       this.submitButton.click()
     ]);
   }

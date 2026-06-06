@@ -18,4 +18,16 @@ test.describe('Executive Application UI Authentication', () => {
     expect(authState).toBeTruthy();
     await expect(page.getByText(/Entebus guest|Guest/i)).toBeVisible();
   });
+
+  test('should log out from profile menu and return to login page', async ({ page, uiCredentials }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login(uiCredentials.username, uiCredentials.password);
+
+    const dashboardPage = new DashboardPage(page);
+    await dashboardPage.expectLoaded();
+
+    await dashboardPage.logout();
+    await loginPage.expectVisible();
+  });
 });
