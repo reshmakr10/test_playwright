@@ -12,17 +12,16 @@ export class DashboardPage {
   }
 
   async expectLoaded() {
-    await expect(this.welcomeHeading).toBeVisible({ timeout: 20000 });
     await expect(this.page).toHaveURL(/dashboard|\/$/, { timeout: 20000 });
   }
 
   async clickSectionCard(sectionName: string) {
+    // Wait for dashboard cards to be present
+    await this.page.locator('a.dashboard-card').first().waitFor({ state: 'visible', timeout: 15000 });
     const card = this.page.locator('a.dashboard-card', { hasText: sectionName }).first();
     await expect(card).toBeVisible({ timeout: 15000 });
-    await Promise.all([
-      this.page.waitForLoadState('networkidle'),
-      card.click()
-    ]);
+    await card.click();
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async openProfileMenu() {

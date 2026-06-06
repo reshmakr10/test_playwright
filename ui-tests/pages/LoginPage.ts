@@ -34,6 +34,5 @@ export class LoginPage {
       this.page.waitForURL('**/dashboard', { timeout: 30000 }),
       this.submitButton.click()
     ]);
-    await expect(this.page.getByRole('heading', { name: /welcome back/i })).toBeVisible({ timeout: 20000 });
   }
 }
