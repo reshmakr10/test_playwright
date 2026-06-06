@@ -1,0 +1,10 @@
+{
+  "mcp.servers": {
+    "playwright": {
+      "command": "/home/nixbug/.nvm/versions/node/v22.22.2/bin/npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
+}
